@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="shopstyle.css">
+    <title>shopjoin</title>
+    <script>
+        function idcheck() { //idcheck() 함수 실행 시작 부분
+            var idc = document.getElementById("id1").value.replace(/[^a-z0-9_-]/g,"");
+//아이디 입력 값에 a-z까지의 소문자, 알파벳 및 0-9까지의 숫자, _ 또는 - 특수문자를
+//제외한 값은 전부 공란으로 변경을 시켜서 변수 idc에 저장
+            document.getElementById("id1").value = idc;
+//id1을 가진 요소 즉, 아이디 입력란의 값을 idc에 저장된 값으로 교체
+
+            if(idc.length >= 7) { //idc에 저장된 문자열 길이가 7이상일 때 실행 시작 부분
+
+                var number = idc.search(/[0-9]/g);
+//idc에 저장된 문자열에 0-9까지의 숫자중 하나라도 있다면 0을 없다면 -1을
+//변수 number에 저장
+                var alphabet = idc.search(/[a-z]/g);
+//idc에 저장된 문자열에 a-z까지의 알파벳중 하나라도 있다면 0을 없다면 -1을
+//변수 alphabet에 저장
+                if(number >= 0 && alphabet >= 0) {
+//number 및 alphabet 변수에 저장된 값이 0이상일 때 실행 시작 부분
+
+                    var obj, dbParam, xmlhttp, myObj, x;
+//변수 obj, dbParam, xmlhttp, myObj, x 생성
+                    obj = {"table":"shopmember","id":idc};
+//변수 obj는 자바스크립트 객체 정보를 저장한다.
+                    dbParam = JSON.stringify(obj);
+//변수 dbParam은 onj에 담긴 자바스크립트 객체 정보를 JSON형식의 문자열로 저장한다.
+                    xmlhttp = new XMLHttpRequest();
+//변수 xmlhttp는 서버에 데이터를 요청한 값을 저장한다.
+                    xmlhttp.onreadystatechange = function() {
+//xmlhttpRequest 객체의 상태가 변할 때마다 자동으로 호출하는 함수 실행 시작 부분
+                        if(this.readyState == 4 && this.status == 200) {
+//데이터 전부를 받은 상태이고,
+//서버로부터의 응답상태가 요청 성공 상태라면 실행 시작 부분
+                            myObj = JSON.parse(this.responseText);
+//응답받은 JSON형식의 문자열을 자바스크립트 객체 값으로 myObj에 저장
+                            for(x in myObj) {
+//myObj에 저장된 자바스크립트 객체의 배열의 길이 값만큼 반복 실행 시작 부분
+                                if(myObj[x] == '1') { //myObj[x]에 담긴 값이 1이라면 실행 시작 부분
+                                    document.getElementById("ids").innerHTML = "ID exists.";
+                                    document.getElementById("idh").value = "";
+                                } //myObj[x]에 담긴 값이 1이라면 실행 끝 부분
+                                else { //myObj[x]에 담긴 값이 1이 아니라면 실행 시작 부분
+                                    document.getElementById("ids").innerHTML = "The ID is available for use.";
+                                    document.getElementById("idh").value = "1";
+                                } //myObj[x]에 담긴 값이 1이 아니라면 실행 끝 부분
+                            } //myObj에 저장된 자바스크립트 객체의 배열의 길이 값만큼 반복 실행 끝 부분
+                        }
+//데이터 전부를 받은 상태이고,
+//서버로부터의 응답상태가 요청 성공 상태라면 실행 끝 부분
+                    }; //xmlhttpRequest 객체의 상태가 변할 때마다 자동으로 호출하는 함수 실행 끝 부분
+                    xmlhttp.open("POST","shopidcheck.php",true);
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xmlhttp.send("content="+dbParam);
+                } //number 및 alphabet 변수에 저장된 값이 0이상일 때 실행 끝 부분
+
+                else { //number 및 alphabet 변수에 저장된 값이 0미만일 때 실행 시작 부분
+                    document.getElementById("ids").innerHTML = "It is not an English and Numeric combination.";
+                    document.getElementById("idh").value = "";
+                } //number 및 alphabet 변수에 저장된 값이 0미만일 때 실행 끝 부분
+
+            } //idc에 저장된 문자열 길이가 7이상일 때 실행 끝 부분
+            else { //idc에 저장된 문자열 길이가 7 미만일 때 실행 시작 부분
+                document.getElementById("ids").innerHTML = "Please enter a minimum of 7 digits for your ID. Only - and _ are allowed in English characters, numbers and symbols.";
+                document.getElementById("idh").value = "";
+            } //idc에 저장된 문자열 길이가 7 미만일 때 실행 끝 부분
+
+        } //idcheck() 함수 실행 끝 부분
+
+        function pwcheck(pw) { //passwordcheck(pw) 함수 실행 시작 부분
+            var pwc = document.getElementById("pw01").value
+                .replace(/[^a-zA-Z0-9\~\`\!\@\#\$\%\^\&\*\(\)\_\-\+\=\{\}\[\]\|\\\:\;\"\'\<\>\,\.\?\/]/g,"");
+            document.getElementById("pw01").value = pwc;
+            var number = pw.search(/[0-9]/g);
+            var alphabet = pw.search(/[a-z]/ig);
+            var special =
+                pw.search(/[\~\`\!\@\#\$\%\^\&\*\(\)\_\-\+\=\{\}\[\]\|\\\:\;\"\'\<\>\,\.\?\/]/g);
+            if(((alphabet >= 0) &&  (number >= 0) && (special >= 0)) &&
+                (document.getElementById("pw01").value.length >= 8)) {
+//영어,숫자,특수문자를 포함하고 길이가 8이상일 때 실행 시작 부분
+                if(document.getElementById("pw01").value == document.getElementById("pw02").value) {
+//비밀번호 및 비밀번호 확인란의 값이 일치하는 경우 실행 시작 부분
+                    document.getElementById("pw1").innerHTML = "";
+                    document.getElementById("pw2").innerHTML = "Your password has been verified.";
+                    document.getElementById("passwordh").value = "1";
+                } //비밀번호 및 비밀번호 확인란의 값이 일치하는 경우 실행 끝 부분
+                else { //비밀번호 및 비밀번호 확인란의 값이 일치하지 않는 경우 실행 시작 부분
+                    document.getElementById("pw1").innerHTML = "";
+                    document.getElementById("pw2").innerHTML = "Please enter the same value as your password.";
+                    document.getElementById("passwordh").value = "";
+                } //비밀번호 및 비밀번호 확인란의 값이 일치하지 않는 경우 실행 끝 부분
+            } //영어,숫자,특수문자를 포함하고 길이가 8이상일 때 실행 끝 부분
+            else {
+                document.getElementById("pw1").innerHTML = "Please enter at least 8 digits including English, numbers, and special characters.";
+                document.getElementById("pw2").innerHTML = "Please enter the same value as your password.";
+                document.getElementById("passwordh").value = "";
+            }
+        }  //passwordcheck(pw) 함수 실행 끝 부분
+
+        function pwcheck2(pw) {  //passwordcheck2(pw) 함수 실행 시작 부분
+            var pwc = document.getElementById("pw02").value
+                .replace(/[^a-zA-Z0-9\~\`\!\@\#\$\%\^\&\*\(\)\_\-\+\=\{\}\[\]\|\\\:\;\"\'\<\>\,\.\?\/]/g,"");
+            document.getElementById("pw02").value = pwc;
+            var number = pw.search(/[0-9]/g);
+            var alphabet = pw.search(/[a-z]/ig);
+            var special =
+                pw.search(/[\~\`\!\@\#\$\%\^\&\*\(\)\_\-\+\=\{\}\[\]\|\\\:\;\"\'\<\>\,\.\?\/]/g);
+            if(((alphabet >= 0) &&  (number >= 0) && (special >= 0)) &&
+                (document.getElementById("pw02").value.length >= 8)) {
+//영어,숫자,특수문자를 포함하고 길이가 8이상일 때 실행 시작 부분
+                if(document.getElementById("pw01").value == document.getElementById("pw02").value) {
+//비밀번호 및 비밀번호 확인란의 값이 일치하는 경우 실행 시작 부분
+                    document.getElementById("pw1").innerHTML = "";
+                    document.getElementById("pw2").innerHTML = "Your password has been verified.";
+                    document.getElementById("passwordh").value = "1";
+                } //비밀번호 및 비밀번호 확인란의 값이 일치하는 경우 실행 끝 부분
+                else { //비밀번호 및 비밀번호 확인란의 값이 일치하지 않는 경우 실행 시작 부분
+                    document.getElementById("pw2").innerHTML = "Please enter the same value as your password.";
+                    document.getElementById("passwordh").value = "";
+                } //비밀번호 및 비밀번호 확인란의 값이 일치하지 않는 경우 실행 끝 부분
+            } //영어,숫자,특수문자를 포함하고 길이가 8이상일 때 실행 끝 부분
+            else {
+                document.getElementById("pw2").innerHTML = "Please enter the same value as your password.";
+                document.getElementById("passwordh").value = "";
+            }
+        } //passwordcheck2(pw) 함수 실행 끝 부분
+    </script>
+</head>
+<body oncontextmenu='alert("z_z"); return false' ondragstart='return false' onselectstart='return false'>
+<header class="loginheader">
+    <h1 id = "logo"><a href = "book.html" target="_self">ShopMall</a></h1>
+    <nav>
+        <ul>
+            <li><a href ="shoplogin.html" target="_self">로그인</a></li>
+            <li><a href ="shopjoin.html" target="_self">회원가입</a></li>
+            <li><a href ="mypage.html" target="_self">마이페이지</a></li>
+            <li><a href ="order.html" target="_self">장바구니</a></li>
+            <li><a href ="orderfind.html" target="_self">주문조회</a></li>
+            <li><a href ="guest.html" target="_self">고객센터</a></li>
+            <input type="text"/>
+            <input type="submit" value="검색"/>
+        </ul>
+    </nav>
+</header>
+<form method = "post" id="login-form" onsubmit="return login()" action = "shopjoin.php" class="joinform">
+    <h2><span style = color:white>회원가입</span></h2>
+    <label>아이디</label>
+    <input type="text" name="id" id="id1" onkeyup="idcheck()"><span id="ids" style=color:red>Please enter a minimum of 7 digits for your ID. Only - and _ are allowed in English characters, numbers and symbols.</span><br>
+    <input type="hidden" name="hiddenid" id="idh" value="">
+    <p>비밀번호</p><input type="password" name="pw1" id = "pw01" onkeyup="pwcheck(this.value)"><span id="pw1" style=color:red>Please enter at least 8 digits including English, numbers, and special characters.</span>
+    <p>비밀번호 확인</p><input type="password" name="pw2" id="pw02" onkeyup="pwcheck2(this.value)"><span id="pw2" style=color:red>Please enter the same value as your password.</span>
+    <input type="hidden" name="hiddenpw" id="passwordh" value="">
+    <p>이름</p><input type="text" name="name" id ="name1" onkeyup="namecheck()">
+    <p>이메일</p><input type="text" name="email"onkeyup="emailcheck">
+    <p>주소</p><input type="text" name="address">
+    <input type="submit" value="Join">
+</form>
+</body>
+</html>

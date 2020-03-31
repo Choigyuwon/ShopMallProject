@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="shopstyle.css">
+    <title>Shopmall site</title>
+    <style>
+        .shows1{position: absolute;left: 300px; top: 700px;}
+        .shows1 li{display:inline-block}
+        .img1{width:300px;height: 300px;}
+    </style>
+</head>
+<body oncontextmenu='alert("z_z"); return false' ondragstart='return false' onselectstart='return false'>
+<header>
+    <h1 id = "logo"><a href = "book.html" target="_self">ShopMall</a></h1>
+    <nav>
+        <ul>
+            <li><a href ="shoplogin.html" target="_self">로그인</a></li>
+            <li><a href ="shopjoin.html" target="_self">회원가입</a></li>
+            <li><a href ="mypage.html" target="_self">마이페이지</a></li>
+            <li><a href ="order.html" target="_self">장바구니</a></li>
+            <li><a href ="orderfind.html" target="_self">주문조회</a></li>
+            <li><a href ="guest.html" target="_self">고객센터</a></li>
+            <input type="text"/>
+            <input type="submit" value="검색"/>
+        </ul>
+    </nav>
+</header>
+<table class="mainimg">
+    <tr>
+        <td>
+            <img src="main.PNG">
+        </td>
+        <td>
+            <img src="main.PNG">
+        </td>
+        <td>
+            <img src="main.PNG">
+        </td>
+        <td>
+            <img src="main.PNG">
+        </td>
+
+    </tr>
+</table>
+<ul class ="list">
+    <li class ="list1">Best</li>
+    <li class ="list1">New</li>
+    <li>맨투맨</li>
+    <li>셔츠</li>
+    <li>바지</li>
+    <li>자켓</li>
+    <li>신발</li>
+    <li>모자</li>
+    <li>코디룩</li>
+</ul>
+<ul class="shows1">
+    <h1>추천 상품</h1>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <h1>인기 상품</h1>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+    <li>
+        <div><img src="main.PNG" class="img1"></div>
+        <div>
+            <p> </p>
+            <strong>맨투맨</strong>
+            <p> 4color / S,M,L SIZE</p>
+            <p>23000 원</p>
+        </div>
+    </li>
+
+</ul>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.mainimg').bxSlider();
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        var main = $('.mainimg').bxSlider({
+
+            mode: 'fade',
+
+            auto: true,	//자동으로 슬라이드
+
+            controls : true,	//좌우 화살표
+
+            autoControls: true,	//stop,play
+
+            pager:true,	//페이징
+
+            pause: 3000,
+
+            autoDelay: 0,
+
+            slideWidth: 800, //이미지 박스 크기설정
+
+            speed: 500,
+
+            stopAutoOnclick:true
+
+        });
+    });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5e46e727a89cda5a188607bb/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
