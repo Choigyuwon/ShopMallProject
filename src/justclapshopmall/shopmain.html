@@ -1,0 +1,859 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>그누보드5</title>
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/theme/basic/css/default_shop.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/js/font-awesome/css/font-awesome.min.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/js/owlcarousel/owl.carousel.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/theme/basic/skin/outlogin/shop_basic/style.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/theme/basic/skin/outlogin/shop_side/style.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/skin/shop/basic/style.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/theme/basic/skin/latest/notice/style.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/theme/basic/skin/visit/shop_basic/style.css?ver=191202">
+    <link rel="stylesheet" href="http://gw2988.cafe24.com/gc5/js/owlcarousel/owl.carousel.min.css?ver=191202">
+    <!--[if lte IE 8]>
+    <script src="http://gw2988.cafe24.com/gc5/js/html5.js"></script>
+    <![endif]-->
+    <script>
+        // 자바스크립트에서 사용하는 전역변수 선언
+        var g5_url       = "http://gw2988.cafe24.com/gc5";
+        var g5_bbs_url   = "http://gw2988.cafe24.com/gc5/bbs";
+        var g5_is_member = "1";
+        var g5_is_admin  = "super";
+        var g5_is_mobile = "";
+        var g5_bo_table  = "";
+        var g5_sca       = "";
+        var g5_editor    = "";
+        var g5_cookie_domain = "";
+        var g5_theme_shop_url = "http://gw2988.cafe24.com/gc5/theme/basic/shop";
+        var g5_shop_url = "http://gw2988.cafe24.com/gc5/shop";
+    </script>
+    <script src="http://gw2988.cafe24.com/gc5/js/jquery-1.12.4.min.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/jquery-migrate-1.4.1.min.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/jquery.shop.menu.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/common.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/wrest.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/placeholders.min.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/owlcarousel/owl.carousel.min.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/jquery.bxslider.js?ver=191202"></script>
+    <script src="http://gw2988.cafe24.com/gc5/js/shop.list.action.js?ver=191202"></script>
+</head>
+<body>
+<div id="hd_login_msg">최고관리자 최규원님 로그인 중 <a href="http://gw2988.cafe24.com/gc5/bbs/logout.php">로그아웃</a></div>
+<!-- 상단 시작 { -->
+<div id="hd">
+    <h1 id="hd_h1">그누보드5</h1>
+    <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+
+
+    <!-- 팝업레이어 시작 { -->
+    <div id="hd_pop">
+        <h2>팝업레이어 알림</h2>
+
+        <span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+    <script>
+        $(function() {
+            $(".hd_pops_reject").click(function() {
+                var id = $(this).attr('class').split(' ');
+                var ck_name = id[1];
+                var exp_time = parseInt(id[2]);
+                $("#"+id[1]).css("display", "none");
+                set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+            });
+            $('.hd_pops_close').click(function() {
+                var idb = $(this).attr('class').split(' ');
+                $('#'+idb[1]).css('display','none');
+            });
+            $("#hd").css("z-index", 1000);
+        });
+    </script>
+    <!-- } 팝업레이어 끝 -->
+    <div id="tnb">
+        <div class="inner">
+            <ul id="hd_define">
+            </ul>
+            <ul id="hd_qnb">
+                <li><a href="http://gw2988.cafe24.com/gc5/bbs/faq.php">FAQ</a></li>
+                <li><a href="http://gw2988.cafe24.com/gc5/bbs/qalist.php">1:1문의</a></li>
+                <li><a href="http://gw2988.cafe24.com/gc5/shop/personalpay.php">개인결제</a></li>
+                <li><a href="http://gw2988.cafe24.com/gc5/shop/itemuselist.php">사용후기</a></li>
+                <li><a href="http://gw2988.cafe24.com/gc5/shop/itemqalist.php">상품문의</a></li>
+                <li class="bd"><a href="http://gw2988.cafe24.com/gc5/shop/couponzone.php">쿠폰존</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="hd_wrapper">
+        <div id="logo">
+            <a href="http://gw2988.cafe24.com/gc5/shop/"><img src="http://gw2988.cafe24.com/gc5/data/common/logo_img" alt="그누보드5"></a>
+        </div>
+
+        <div class="hd_sch_wr">
+            <fieldset id="hd_sch">
+                <legend>쇼핑몰 전체검색</legend>
+                <form name="frmsearch1" action="http://gw2988.cafe24.com/gc5/shop/search.php" onsubmit="return search_submit(this);">
+                    <label for="sch_str" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+                    <input type="text" name="q" value="" id="sch_str" required placeholder="검색어를 입력해주세요">
+                    <button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+                    <button type="button" style="font-size:100px;" onclick="location.href='https://gw2988.cafe24.com/zxc/aitest.php' ">ai</button>
+                </form>
+                <script>
+                    function search_submit(f) {
+                        if (f.q.value.length < 2) {
+                            alert("검색어는 두글자 이상 입력하십시오.");
+                            f.q.select();
+                            f.q.focus();
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+            </fieldset>
+        </div>
+        <!-- 쇼핑몰 배너 시작 { -->
+        <!-- } 쇼핑몰 배너 끝 -->
+
+        <ul class="hd_login">
+            <li class="shop_login">
+
+
+                <button class="btn_member_mn">
+                    <span class="profile_img"><img src="http://gw2988.cafe24.com/gc5/img/no_profile.gif" width="30" height="30" alt="profile_image"></span>
+                    <span class="profile_name">최규원</span>님
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </button>
+
+                <!-- 로그인 후 아웃로그인 시작 { -->
+                <section id="ol_after" class="ol member_mn">
+                    <h2>회원정보</h2>
+                    <ul id="ol_after_private">
+                        <li><a href="http://gw2988.cafe24.com/gc5/bbs/member_confirm.php?url=register_form.php" >정보수정</a></li>
+                        <li><a href="http://gw2988.cafe24.com/gc5/bbs/point.php" target="_blank" class="win_point">포인트<strong>600</strong></a></li>
+                        <li><a href="http://gw2988.cafe24.com/gc5/shop/coupon.php" target="_blank" class="win_coupon">쿠폰<strong>0</strong></a></li>
+                        <li><a href="http://gw2988.cafe24.com/gc5/bbs/memo.php" target="_blank" class="win_memo"><span class="sound_only">안 읽은</span>쪽지<strong>0</strong></a></li>
+                        <li><a href="http://gw2988.cafe24.com/gc5/shop/mypage.php">마이페이지</a></li>
+                        <li>
+                            <a href="http://gw2988.cafe24.com/gc5/adm">관리자</a>
+                        </li>
+                    </ul>
+                    <footer id="ol_after_ft">
+                        <a href="http://gw2988.cafe24.com/gc5/bbs/logout.php" id="ol_after_logout">로그아웃</a>
+                    </footer>
+                </section>
+
+                <script>
+                    // 탈퇴의 경우 아래 코드를 연동하시면 됩니다.
+                    function member_leave()
+                    {
+                        if (confirm("정말 회원에서 탈퇴 하시겠습니까?"))
+                            location.href = "http://gw2988.cafe24.com/gc5/bbs/member_confirm.php?url=member_leave.php";
+                    }
+                </script>
+                <!-- } 로그인 후 아웃로그인 끝 -->
+
+            </li>
+            <li class="shop_cart"><a href="http://gw2988.cafe24.com/gc5/shop/cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="sound_only">장바구니</span><span class="count">0</span></a></li>
+        </ul>
+    </div>
+
+    <div id="hd_menu">
+        <button type="button" id="menu_open"><i class="fa fa-bars" aria-hidden="true"></i> 카테고리</button>
+        <div id="category">
+            <h2>전체메뉴</h2>
+            <ul class="cate">
+                <li class="cate_li_1">
+                    <a href="http://gw2988.cafe24.com/gc5/shop/list.php?ca_id=10" class="cate_li_1_a">맨투맨</a>
+                </li>
+            </ul>
+            <button type="button" class="close_btn"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">카테고리 닫기</span></button>
+        </div>
+        <div id="category_all_bg"></div>
+        <script>
+            $(function (){
+                var $category = $("#category");
+
+                $("#menu_open").on("click", function() {
+                    $category.css("display","block");
+                    $("#category_all_bg").css("display","block");
+                });
+
+                $("#category .close_btn, #category_all_bg").on("click", function(){
+                    $category.css("display","none");
+                    $("#category_all_bg").css("display","none");
+                });
+            });
+            $(document).mouseup(function (e){
+                var container = $("#category");
+                if( container.has(e.target).length === 0)
+                    container.hide();
+            });
+        </script>
+        <ul class="hd_menu">
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=1">히트상품</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=2">추천상품</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=3">최신상품</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=4">인기상품</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=5">할인상품</a></li>
+        </ul>
+    </div>
+</div>
+<!-- } 상단 끝 -->
+
+<div id="side_menu">
+    <ul id="quick">
+        <li><button class="btn_sm_cl1 btn_sm"><i class="fa fa-user-o" aria-hidden="true"></i><span class="qk_tit">마이메뉴</span></button></li>
+        <li><button class="btn_sm_cl2 btn_sm"><i class="fa fa-archive" aria-hidden="true"></i><span class="qk_tit">오늘 본 상품</span></button></li>
+        <li><button class="btn_sm_cl3 btn_sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="qk_tit">장바구니</span></button></li>
+        <li><button class="btn_sm_cl4 btn_sm"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="qk_tit">위시리스트</span></button></li>
+    </ul>
+    <button type="button" id="top_btn"><i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span></button>
+    <div id="tabs_con">
+        <div class="side_mn_wr1 qk_con">
+            <div class="qk_con_wr">
+
+                <!-- 로그인 후 아웃로그인 시작 { -->
+                <section id="s_ol_after" class="ol">
+                    <header id="s_ol_after_hd">
+                        <h2>나의 회원정보</h2>
+                        <span class="profile_img">
+            <img src="http://gw2988.cafe24.com/gc5/img/no_profile.gif" alt="profile_image">            <a href="http://gw2988.cafe24.com/gc5/adm/" class="btn_admin"><i class="fa fa-cog fa-fw"></i><span class="sound_only">관리자</span></a>        </span>
+                        <strong>최규원님</strong>
+                        <a href="http://gw2988.cafe24.com/gc5/bbs/member_confirm.php?url=register_form.php" id="s_ol_after_info">정보수정</a>
+                        <a href="http://gw2988.cafe24.com/gc5/bbs/logout.php" id="s_ol_after_logout">로그아웃</a>
+                    </header>
+                    <ul id="s_ol_after_private">
+                        <li>
+                            <a href="http://gw2988.cafe24.com/gc5/bbs/point.php" target="_blank" id="ol_after_pt" class="win_point">
+                                <i class="fa fa-database" aria-hidden="true"></i>포인트
+                                <strong>600</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://gw2988.cafe24.com/gc5/shop/coupon.php" target="_blank" class="win_coupon">
+                                <i class="fa fa-ticket" aria-hidden="true"></i>쿠폰
+                                <strong>0</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://gw2988.cafe24.com/gc5/bbs/memo.php" target="_blank" id="ol_after_memo" class="win_memo">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i><span class="sound_only">안 읽은 </span>쪽지
+                                <strong>0</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://gw2988.cafe24.com/gc5/bbs/scrap.php" target="_blank" id="ol_after_scrap" class="win_scrap">
+                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>스크랩
+                                <strong class="scrap">0</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <script>
+                    // 탈퇴의 경우 아래 코드를 연동하시면 됩니다.
+                    function member_leave()
+                    {
+                        if (confirm("정말 회원에서 탈퇴 하시겠습니까?"))
+                            location.href = "http://gw2988.cafe24.com/gc5/bbs/member_confirm.php?url=member_leave.php";
+                    }
+                </script>
+                <!-- } 로그인 후 아웃로그인 끝 -->
+                <ul class="side_tnb">
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/mypage.php">마이페이지</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/orderinquiry.php">주문내역</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/bbs/faq.php">FAQ</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/bbs/qalist.php">1:1문의</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/personalpay.php">개인결제</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/itemuselist.php">사용후기</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/itemqalist.php">상품문의</a></li>
+                    <li><a href="http://gw2988.cafe24.com/gc5/shop/couponzone.php">쿠폰존</a></li>
+                </ul>
+                <button type="button" class="con_close"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sound_only">나의정보 닫기</span></button>
+            </div>
+        </div>
+        <div class="side_mn_wr2 qk_con">
+            <div class="qk_con_wr">
+
+                <!-- 오늘 본 상품 시작 { -->
+                <div id="stv">
+                    <h2 class="s_h2">오늘 본 상품 <span>0</span></h2>
+
+
+                    <p class="li_empty">없음</p>
+
+                </div>
+
+                <script src="http://gw2988.cafe24.com/gc5/js/scroll_oldie.js"></script>
+                <!-- } 오늘 본 상품 끝 -->	    		<button type="button" class="con_close"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sound_only">오늘 본 상품 닫기</span></button>
+            </div>
+        </div>
+        <div class="side_mn_wr3 qk_con">
+            <div class="qk_con_wr">
+
+                <!-- 장바구니 간략 보기 시작 { -->
+                <aside id="sbsk" class="sbsk">
+                    <h2 class="s_h2">장바구니 <span class="cart-count">0</span></h2>
+                    <form name="skin_frmcartlist" id="skin_sod_bsk_list" method="post" action="http://gw2988.cafe24.com/gc5/shop/cartupdate.php">
+                        <ul>
+                            <li class="li_empty">장바구니 상품 없음</li>
+                        </ul>
+                        <a href="http://gw2988.cafe24.com/gc5/shop/cart.php" class="go_cart">전체보기</a>
+                    </form>
+                </aside>
+                <script>
+                    jQuery(function ($) {
+                        $("#sbsk").on("click", ".cart_del", function(e) {
+                            e.preventDefault();
+
+                            var it_id = $(this).data("it_id");
+                            var $wrap = $(this).closest("li");
+
+                            $.ajax({
+                                url: g5_shop_url+"/ajax.action.php",
+                                type: "POST",
+                                data: {
+                                    "it_id" : it_id,
+                                    "action" : "cart_delete"
+                                },
+                                dataType: "json",
+                                async: true,
+                                cache: false,
+                                success: function(data, textStatus) {
+                                    if(data.error != "") {
+                                        alert(data.error);
+                                        return false;
+                                    }
+
+                                    $wrap.remove();
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <!-- } 장바구니 간략 보기 끝 -->
+
+                <button type="button" class="con_close"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sound_only">장바구니 닫기</span></button>
+            </div>
+        </div>
+        <div class="side_mn_wr4 qk_con">
+            <div class="qk_con_wr">
+
+                <!-- 위시리스트 간략 보기 시작 { -->
+                <aside id="wish" class="side-wish">
+                    <h2 class="s_h2">위시리스트 <span>0</span></h2>
+                    <ul>
+                        <li class="li_empty">위시리스트 없음</li>
+                    </ul>
+                </aside>
+                <!-- } 위시리스트 간략 보기 끝 -->
+                <button type="button" class="con_close"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sound_only">위시리스트 닫기</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(function ($){
+        $(".btn_member_mn").on("click", function() {
+            $(".member_mn").toggle();
+            $(".btn_member_mn").toggleClass("btn_member_mn_on");
+        });
+
+        var active_class = "btn_sm_on",
+            side_btn_el = "#quick .btn_sm",
+            quick_container = ".qk_con";
+
+        $(document).on("click", side_btn_el, function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if (!$this.hasClass(active_class)) {
+                $(side_btn_el).removeClass(active_class);
+                $this.addClass(active_class);
+            }
+
+            if( $this.hasClass("btn_sm_cl1") ){
+                $(".side_mn_wr1").show();
+            } else if( $this.hasClass("btn_sm_cl2") ){
+                $(".side_mn_wr2").show();
+            } else if( $this.hasClass("btn_sm_cl3") ){
+                $(".side_mn_wr3").show();
+            } else if( $this.hasClass("btn_sm_cl4") ){
+                $(".side_mn_wr4").show();
+            }
+        }).on("click", ".con_close", function(e){
+            $(quick_container).hide();
+            $(side_btn_el).removeClass(active_class);
+        });
+
+        $(document).mouseup(function (e){
+            var container = $(quick_container),
+                mn_container = $(".shop_login");
+            if( container.has(e.target).length === 0){
+                container.hide();
+                $(side_btn_el).removeClass(active_class);
+            }
+            if( mn_container.has(e.target).length === 0){
+                $(".member_mn").hide();
+                $(".btn_member_mn").removeClass("btn_member_mn_on");
+            }
+        });
+
+        $("#top_btn").on("click", function() {
+            $("html, body").animate({scrollTop:0}, '500');
+            return false;
+        });
+    });
+</script>
+<!-- 전체 콘텐츠 시작 { -->
+<div id="wrapper" class="">
+    <!-- #container 시작 { -->
+    <div id="container">
+
+        <div id="aside">
+
+            <!-- 쇼핑몰 카테고리 시작 { -->
+            <nav id="gnb">
+                <h2>쇼핑몰 카테고리</h2>
+                <ul id="gnb_1dul">
+                    <li class="gnb_1dli" style="z-index:998">
+                        <a href="http://gw2988.cafe24.com/gc5/shop/list.php?ca_id=10" class="gnb_1da">맨투맨</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- } 쇼핑몰 카테고리 끝 -->                        <!-- 인기상품 시작 { -->
+            <section id="side_pd">
+                <h2><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=4">인기상품</a></h2>
+
+                <!-- 상품진열 50 시작 { -->
+                <p class="sct_noitem">등록된 상품이 없습니다.</p>
+
+                <script>
+                    $(document).ready(function(){
+                        $('.smt_30').bxSlider({
+                            minSlides: 4,
+                            maxSlides: 4,
+                            mode: 'vertical',
+                            pager:false
+                        });
+                    });
+                </script>
+                <!-- } 상품진열 50 끝 -->            </section>
+            <!-- } 인기상품 끝 -->
+
+
+
+            <script>
+                $(document).ready(function(){
+                    $('.sb_bn').show().bxSlider({
+                        speed:800,
+                        pager:true,
+
+                    });
+                });
+            </script>
+        </div>
+        <!-- .shop-content 시작 { -->
+        <div class="shop-content is_index">
+            <!-- 글자크기 조정 display:none 되어 있음 시작 { -->
+            <div id="text_size">
+                <button class="no_text_resize" onclick="font_resize('container', 'decrease');">작게</button>
+                <button class="no_text_resize" onclick="font_default('container');">기본</button>
+                <button class="no_text_resize" onclick="font_resize('container', 'increase');">크게</button>
+            </div>
+            <!-- } 글자크기 조정 display:none 되어 있음 끝 -->
+            <!-- 메인이미지 시작 { -->
+            <!-- } 메인이미지 끝 -->
+
+            <!-- 히트상품 시작 { -->
+            <section id="idx_hit" class="sct_wrap">
+                <header>
+                    <h2><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=1">히트상품</a></h2>
+                </header>
+
+                <!-- 상품진열 10 시작 { -->
+                <ul class="sct smt_40 owl-carousel">
+                    <li class="sct_li sct_clear" style="width:160px">
+                        <div class="sct_img">
+                            <a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327">
+                                <img src="http://gw2988.cafe24.com/gc5/shop/img/no_image.gif" width="160" height="160" alt="맨투맨">
+                            </a>
+                        </div>
+                        <div class="sct_txt"><a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327">
+                            맨투맨
+                        </a></div>
+                        <div class="sct_cost">
+                            11,111원
+                        </div>
+                    </li>
+                </ul>
+                <!-- } 상품진열 10 끝 --></section>
+            <!-- } 히트상품 끝 -->
+            <script>
+                //히트상품
+                $(function(){
+                    $('#idx_hit .smt_40').owlCarousel({
+                        loop:true,
+                        nav:true,
+                        autoplay:true,
+                        autoplayHoverPause:true,
+                        responsive:{
+                            1000:{items:5}
+                        }
+                    })
+                });
+            </script>
+
+            <!-- 최신상품 시작 { -->
+            <section class="sct_wrap">
+                <header>
+                    <h2><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=3">최신상품</a></h2>
+                </header>
+
+                <!-- 상품진열 40 시작 { -->
+                <ul class="smt smt_10">
+                    <li class="sct_li sct_clear">
+                        <div class="sct_img">
+                            <a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327">
+                                <img src="http://gw2988.cafe24.com/gc5/shop/img/no_image.gif" width="215" height="215" alt="맨투맨">
+                            </a>
+                            <div class="sct_btn">
+                                <button type="button" class="btn_cart sct_cart" data-it_id="1585687327"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 장바구니</button>
+                            </div>
+                            <div class="cart-layer"></div>
+                            <span class="shop_icon_soldout"><span class="soldout_txt">SOLD OUT</span></span></div>
+                        <div class="sct_ct_wrap">
+                            <div class="sct_txt"><a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327">
+                                맨투맨
+                            </a></div>
+                            <div class="sct_basic">ㅋㅋ</div>
+                            <div class="sct_cost">
+                                11,111원
+                            </div>
+                            <div class="sct_op_btn">
+                                <button type="button" class="btn_wish" data-it_id="1585687327"><span class="sound_only">위시리스트</span><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button type="button" class="btn_share"><span class="sound_only">공유하기</span><i class="fa fa-share-alt" aria-hidden="true"></i></button>
+                                <div class="sct_sns_wrap"><div class="sct_sns"><h3>SNS 공유</h3><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327&amp;p=%EB%A7%A8%ED%88%AC%EB%A7%A8+%7C+%EA%B7%B8%EB%88%84%EB%B3%B4%EB%93%9C5" class="share-facebook" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/facebook.png" alt="페이스북에 공유"></a><a href="https://twitter.com/share?url=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327&amp;text=%EB%A7%A8%ED%88%AC%EB%A7%A8+%7C+%EA%B7%B8%EB%88%84%EB%B3%B4%EB%93%9C5" class="share-twitter" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/twitter.png" alt="트위터에 공유"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327" class="share-googleplus" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/gplus.png" alt="구글플러스에 공유"></a><button type="button" class="sct_sns_cls"><span class="sound_only">닫기</span><i class="fa fa-times" aria-hidden="true"></i></button></div>
+                                    <div class="sct_sns_bg"></div></div></div>
+                        </div>
+                        <div class="sit_icon_li"><span class="sit_icon"><span class="shop_icon shop_icon_1">히트</span><span class="shop_icon shop_icon_2">추천</span><span class="shop_icon shop_icon_3">최신</span></span></div>
+                    </li>
+                </ul>
+                <!-- } 상품진열40 끝 -->
+
+                <script>
+                    //SNS 공유
+                    $(function (){
+                        $(".btn_share").on("click", function() {
+                            $(this).parent("div").children(".sct_sns_wrap").show();
+                        });
+                        $('.sct_sns_bg, .sct_sns_cls').click(function(){
+                            $('.sct_sns_wrap').hide();
+                        });
+                    });
+                </script></section>
+            <!-- } 최신상품 끝 -->
+
+            <!-- 추천상품 시작 { -->
+            <section class="sct_wrap">
+                <header>
+                    <h2><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=2">추천상품</a></h2>
+                </header>
+
+                <!-- 이전 재생 정지 다음 버튼 시작 { -->
+                <ul id="btn_smt_2" class="sctrl">
+                    <li><button type="button" class="sctrl_play">효과재생<span></span></button></li>
+                    <li><button type="button" class="sctrl_stop">효과정지<span></span></button></li>
+                </ul>
+                <!-- } 이전 재생 정지 다음 버튼 끝 -->
+
+                <!-- 상품진열 20 시작 { -->
+                <div id="smt_2" class="sct smt_20">
+                    <ul class="sct_ul sct_ul_first">
+                        <li class="sct_li"><div class="sct_img"><a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327" class="sct_a">
+                            <img src="http://gw2988.cafe24.com/gc5/shop/img/no_image.gif" width="215" height="215" alt="맨투맨">
+                        </a></div>
+                            <div class="sct_txt"><a href="http://gw2988.cafe24.com/gc5/shop/item.php?it_id=1585687327" class="sct_a">
+                                맨투맨
+                            </a></div>
+                            <div class="sct_basic">ㅋㅋ</div>
+                            <div class="sct_cost">
+                                <span class="sct_dict">1,111원</span>
+                                11,111원
+                            </div>
+                            <div class="sct_sns" style="top:225px"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327&amp;p=%EB%A7%A8%ED%88%AC%EB%A7%A8+%7C+%EA%B7%B8%EB%88%84%EB%B3%B4%EB%93%9C5" class="share-facebook" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/facebook.png" alt="페이스북에 공유"></a><a href="https://twitter.com/share?url=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327&amp;text=%EB%A7%A8%ED%88%AC%EB%A7%A8+%7C+%EA%B7%B8%EB%88%84%EB%B3%B4%EB%93%9C5" class="share-twitter" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/twitter.png" alt="트위터에 공유"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fgw2988.cafe24.com%2Fgc5%2Fshop%2Fitem.php%3Fit_id%3D1585687327" class="share-googleplus" target="_blank"><img src="http://gw2988.cafe24.com/gc5/skin/shop/basic/img/gplus.png" alt="구글플러스에 공유"></a></div>
+                            <div class="sct_icon"><span class="sit_icon"><span class="shop_icon shop_icon_1">히트</span><span class="shop_icon shop_icon_2">추천</span><span class="shop_icon shop_icon_3">최신</span></span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <script>
+                    (function($) {
+                        var intervals = {};
+
+                        var methods = {
+                            init: function(option)
+                            {
+                                if(this.length < 1)
+                                    return false;
+
+                                var $smt = this.find("ul.sct_ul");
+                                var $smt_a = $smt.find("a");
+                                var height = 0;
+                                var count = $smt.size();
+                                var c_idx = o_idx = 0;
+                                var fx = null;
+                                var el_id = this[0].id;
+
+                                $smt.each(function() {
+                                    var h = $(this).outerHeight(true);
+                                    if(h > height)
+                                        height = h;
+                                });
+
+                                $smt.each(function(index) {
+                                    if($(this).is(":visible")) {
+                                        o_idx = index;
+                                        return false;
+                                    }
+                                });
+
+                                this.height(height);
+                                $smt.eq(o_idx).siblings().css("top", height+"px");
+
+                                // 기본 설정값
+                                var settings = $.extend({
+                                    interval: 5000,
+                                    duration: 800
+                                }, option);
+
+                                if(count < 2)
+                                    return;
+
+                                set_interval();
+
+                                $smt.hover(
+                                    function() {
+                                        clear_interval();
+                                    },
+                                    function() {
+                                        set_interval();
+                                    }
+                                );
+
+                                $smt_a.on("focusin", function() {
+                                    clear_interval();
+                                });
+
+                                $smt_a.on("focusout", function() {
+                                    set_interval();
+                                });
+
+                                function top_rolling() {
+                                    $smt.each(function(index) {
+                                        if($(this).is(":visible")) {
+                                            o_idx = index;
+                                            return false;
+                                        }
+                                    });
+
+                                    $smt.eq(o_idx).animate(
+                                        { top: "-="+height+"px" }, settings.duration,
+                                        function() {
+                                            $(this).css("display", "none").css("top", height+"px");
+                                        }
+                                    );
+
+                                    c_idx = (o_idx + 1) % count;
+
+                                    $smt.eq(c_idx).css("display", "block").animate(
+                                        { top: "-="+height+"px" }, settings.duration,
+                                        function() {
+                                            o_idx = c_idx;
+                                        }
+                                    );
+                                }
+
+                                function set_interval() {
+                                    if(count > 1) {
+                                        clear_interval();
+
+                                        if($("#btn_"+el_id).find("button.sctrl_stop").data("stop") == true)
+                                            return;
+
+                                        intervals[el_id] = setInterval(top_rolling, settings.interval);
+
+                                        // control 버튼 class
+                                        $("#btn_"+el_id).find("button span").removeClass("sctrl_on").html("")
+                                            .end().find("button.sctrl_play span").addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
+                                    }
+                                }
+
+                                function clear_interval() {
+                                    if(intervals[el_id]) {
+                                        clearInterval(intervals[el_id]);
+
+                                        // control 버튼 class
+                                        $("#btn_"+el_id).find("button span").removeClass("sctrl_on").html("")
+                                            .end().find("button.sctrl_stop span").addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
+                                    }
+                                }
+                            },
+                            stop: function()
+                            {
+                                var el_id = this[0].id;
+                                if(intervals[el_id])
+                                    clearInterval(intervals[el_id]);
+                            }
+                        };
+
+                        $.fn.topRolling = function(option) {
+                            if (methods[option])
+                                return methods[option].apply(this, Array.prototype.slice.call(arguments, 1));
+                            else
+                                return methods.init.apply(this, arguments);
+                        }
+                    }(jQuery));
+
+                    $(function() {
+                        $("#smt_2").topRolling();
+                        // 기본 설정값을 변경하려면 아래처럼 사용
+                        //$("#smt_2").topRolling({ interval: 2000, duration: 800 });
+
+                        // 애니메이션 play
+                        $("#btn_smt_2 button.sctrl_play").on("click", function() {
+                            $("#btn_smt_2 button.sctrl_stop").data("stop", false);
+
+                            var id = $(this).closest(".sctrl").attr("id").replace("btn_", "");
+                            $("#"+id).topRolling();
+                            //$("#"+id).topRolling({ interval: 2000, duration: 800 });
+                        });
+
+                        // 애니메이션 stop
+                        $("#btn_smt_2 button.sctrl_stop").on("click", function() {
+                            if($(this).parent().siblings().find(".sctrl_on").size() > 0) {
+                                $(this).parent().siblings().find("span").removeClass("sctrl_on").html("");
+                                $(this).children().addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
+                                var id = $(this).closest(".sctrl").attr("id").replace("btn_", "");
+                                $("#"+id).topRolling("stop");
+
+                                $(this).data("stop", true);
+                            }
+                        });
+                    });
+                </script>
+                <!-- } 상품진열 20 끝 --></section>
+            <!-- } 추천상품 끝 -->
+
+
+            <!-- 할인상품 시작 { -->
+            <section class="sct_wrap">
+                <header>
+                    <h2><a href="http://gw2988.cafe24.com/gc5/shop/listtype.php?type=5">할인상품</a></h2>
+                </header>
+
+                <!-- 상품진열 30 시작 { -->
+                <p class="sct_noitem">등록된 상품이 없습니다.</p>
+                <!-- } 상품진열 30 끝 -->
+
+                <script>
+                    //SNS 공유
+                    $(function (){
+                        $(".btn_share").on("click", function() {
+                            $(this).parent("div").children(".sct_sns_wrap").show();
+                        });
+                        $('.sct_sns_bg, .sct_sns_cls').click(function(){
+                            $('.sct_sns_wrap').hide();
+                        });
+                    });
+                </script>
+
+            </section>
+            <!-- } 할인상품 끝 -->
+
+        </div>  <!-- } .shop-content 끝 -->
+    </div>      <!-- } #container 끝 -->
+</div>
+<!-- } 전체 콘텐츠 끝 -->
+
+<!-- 하단 시작 { -->
+<div id="ft">
+    <div id="ft_wr">
+        <ul id="ft_link" class="ft_cnt">
+            <li><a href="http://gw2988.cafe24.com/gc5/bbs/content.php?co_id=company">회사소개</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/bbs/content.php?co_id=provision">서비스이용약관</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/bbs/content.php?co_id=privacy">개인정보처리방침</a></li>
+            <li><a href="http://gw2988.cafe24.com/gc5/shop/?device=mobile">모바일버전</a></li>
+        </ul>
+        <div id="ft_company" class="ft_cnt">
+            <h2>사이트 정보</h2>
+            <p class="ft_info">
+                <span><b>회사명</b> JustClap</span><br>
+                <span><b>주소</b> 강원도 원주시 강릉원주대학교 컴퓨터 공학과</span><br>
+                <span><b>대표</b> 최규원</span>
+                <span><b>전화</b> 010-4535-6076</span>
+                <!-- <span><b>운영자</b> 최규원</span><br> -->
+                <span><b>개인정보 보호책임자</b> 최규원</span><br>
+        </div>
+
+        <!-- 커뮤니티 최신글 시작 { -->
+        <section id="sidx_lat">
+
+            <div class="notice ft_cnt">
+                <h2><a href="http://gw2988.cafe24.com/gc5/bbs/board.php?bo_table=notice">공지사항</a></h2>
+                <ul>
+                    <li class="empty_li">게시물이 없습니다.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- } 커뮤니티 최신글 끝 -->
+
+
+        <!-- 접속자집계 시작 { -->
+        <section id="visit" class="ft_cnt">
+            <h2>접속자집계</h2>
+            <dl>
+                <dt><span></span> 오늘</dt>
+                <dd><strong>1</strong></dd>
+                <dt><span></span> 어제</dt>
+                <dd><strong>0</strong></dd>
+                <dt><span></span> 최대</dt>
+                <dd><strong>4</strong></dd>
+                <dt><span></span> 전체</dt>
+                <dd><strong>12</strong></dd>
+            </dl>
+            <a href="http://gw2988.cafe24.com/gc5/adm/visit_list.php" class="btn_admin btn"><i class="fa fa-cog fa-spin fa-fw"></i><span class="sound_only">관리자</span></a></section>
+        <!-- } 접속자집계 끝 -->    </div>
+
+    <div id="ft_copy">Copyright &copy; 2001-2013 JustClap. All Rights Reserved.</div>
+</div>
+
+
+<script src="http://gw2988.cafe24.com/gc5/js/sns.js"></script>
+<!-- } 하단 끝 -->
+
+
+<!-- <div style='float:left; text-align:center;'>RUN TIME : 0.017267942428589<br></div> -->
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+    $(function() {
+        var $sv_use = $(".sv_use");
+        var count = $sv_use.length;
+
+        $sv_use.each(function() {
+            $(this).css("z-index", count);
+            $(this).css("position", "relative");
+            count = count - 1;
+        });
+    });
+</script>
+<![endif]-->
+
+
+</body>
+</html>
